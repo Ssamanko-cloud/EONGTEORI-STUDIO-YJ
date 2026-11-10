@@ -335,7 +335,7 @@
                             </span>
 
                             <img
-                                src="../assets/img/portfolio/ready/ready_logo.svg"
+                                src="../assets/img/portfolio/Ready/ready_logo.svg"
                                 alt="READY."
                                 class="esy-ready-reveal-logo">
 
@@ -351,17 +351,17 @@
                         <div class="esy-ready-reveal-phones">
 
                             <img
-                                src="../assets/img/portfolio/ready/ready_mytrip_mockup.png"
+                                src="../assets/img/portfolio/Ready/ready_mytrip_mockup.png"
                                 alt="READY. MY TRIPS 화면"
                                 class="esy-ready-reveal-phone esy-ready-reveal-phone-left">
 
                             <img
-                                src="../assets/img/portfolio/ready/ready_now_mockup.png"
+                                src="../assets/img/portfolio/Ready/ready_now_mockup.png"
                                 alt="READY. NOW 화면"
                                 class="esy-ready-reveal-phone esy-ready-reveal-phone-center">
 
                             <img
-                                src="../assets/img/portfolio/ready/ready_pocket_mockup.png"
+                                src="../assets/img/portfolio/Ready/ready_pocket_mockup.png"
                                 alt="READY. POCKET 화면"
                                 class="esy-ready-reveal-phone esy-ready-reveal-phone-right">
 
@@ -553,11 +553,11 @@
                                 <div class="esy-ready-bp-visual">
 
                                     <img class="esy-ready-bp-main-image"
-                                        src="../assets/img/portfolio/ready/ready_now.png"
+                                        src="../assets/img/portfolio/Ready/ready_now.png"
                                         alt="READY NOW 메인 화면">
 
                                     <img class="esy-ready-bp-detail-image"
-                                        src="../assets/img/portfolio/ready/ready_now_boardingpass.png"
+                                        src="../assets/img/portfolio/Ready/ready_now_boardingpass.png"
                                         alt="READY 탑승권 QR 화면">
 
                                 </div>
@@ -599,11 +599,11 @@
                                 <div class="esy-ready-bp-visual">
 
                                     <img class="esy-ready-bp-main-image"
-                                        src="../assets/img/portfolio/ready/ready_mytrip.png"
+                                        src="../assets/img/portfolio/Ready/ready_mytrip.png"
                                         alt="READY MY TRIPS 메인 화면">
 
                                     <img class="esy-ready-bp-detail-image"
-                                        src="../assets/img/portfolio/ready/ready_mytrip_timetable.png"
+                                        src="../assets/img/portfolio/Ready/ready_mytrip_timetable.png"
                                         alt="READY 여행 일정 화면">
 
                                 </div>
@@ -645,11 +645,11 @@
                                 <div class="esy-ready-bp-visual">
 
                                     <img class="esy-ready-bp-main-image"
-                                        src="../assets/img/portfolio/ready/ready_pocket.png"
+                                        src="../assets/img/portfolio/Ready/ready_pocket.png"
                                         alt="READY POCKET 메인 화면">
 
                                     <img class="esy-ready-bp-detail-image"
-                                        src="../assets/img/portfolio/ready/ready_pocket_bdpass.png"
+                                        src="../assets/img/portfolio/Ready/ready_pocket_bdpass.png"
                                         alt="READY 항공권 보관 화면">
 
                                 </div>
@@ -691,11 +691,11 @@
                                 <div class="esy-ready-bp-visual">
 
                                     <img class="esy-ready-bp-main-image"
-                                        src="../assets/img/portfolio/ready/ready_sos.png"
+                                        src="../assets/img/portfolio/Ready/ready_sos.png"
                                         alt="READY SOS 메인 화면">
 
                                     <img class="esy-ready-bp-detail-image"
-                                        src="../assets/img/portfolio/ready/ready_sos_help.png"
+                                        src="../assets/img/portfolio/Ready/ready_sos_help.png"
                                         alt="READY 여권 분실 도움 가이드">
 
                                 </div>
@@ -841,7 +841,7 @@
                     <div class="esy-ready-brand-logo-wrap">
 
                         <img
-                        src="../assets/img/portfolio/ready/ready_logo_brand.svg"
+                        src="../assets/img/portfolio/Ready/ready_logo_brand.svg"
                         alt="READY. 로고"
                         class="esy-ready-brand-logo"
                         >
@@ -1141,31 +1141,28 @@
 
                 <div class="esy-ready-prototype-frame-shell">
 
-                <div class="esy-ready-prototype-frame-top">
-                    <div class="esy-ready-prototype-window-dots"
-                        aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <div class="esy-ready-prototype-frame-top">
+                        <div class="esy-ready-prototype-window-dots"
+                            aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        </div>
+
+                        <span>READY. / LIVE PROTOTYPE</span>
+
+                        <button
+                        type="button"
+                        class="esy-ready-prototype-restart"
+                        id="ready-prototype-restart"
+                        >
+                        <i class="bi bi-arrow-clockwise"></i>
+                        RESTART
+                        </button>
                     </div>
 
-                    <span>READY. / LIVE PROTOTYPE</span>
-
-                    <button
-                    type="button"
-                    class="esy-ready-prototype-restart"
-                    id="ready-prototype-restart"
-                    >
-                    <i class="bi bi-arrow-clockwise"></i>
-                    RESTART
-                    </button>
-                </div>
-
-                <div
-                    class="esy-ready-prototype-frame"
-                    id="ready-prototype-frame"
-                    aria-label="READY. Figma 인터랙티브 프로토타입"
-                ></div>
+                    <div class="esy-ready-prototype-frame" id="ready-prototype-frame" aria-label="READY. Figma 인터랙티브 프로토타입">
+                    </div>
 
                 </div>
 
@@ -1893,7 +1890,7 @@
 
             });
         </script>
-
+  
         
         <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -1906,7 +1903,21 @@
         const experience = section.querySelector("#ready-prototype-experience");
         const frameContainer = section.querySelector("#ready-prototype-frame");
 
-        const figmaURL =
+        if (!launchButton || !restartButton || !experience || !frameContainer) return;
+
+        // Figma 원본 프로토타입
+        const figmaOriginalURL =
+            "https://www.figma.com/proto/KKDyT3kwtV0TAQDjWK84SO/" +
+            "%EC%95%B1%EB%94%94%EC%9E%90%EC%9D%B8-%EC%96%91%EC%9C%A4%EC%A0%95" +
+            "?node-id=95-973" +
+            "&scaling=min-zoom" +
+            "&content-scaling=fixed" +
+            "&page-id=1%3A4" +
+            "&starting-point-node-id=95%3A973" +
+            "&show-proto-sidebar=0";
+
+        // PC / 태블릿용 Figma 임베드
+        const figmaEmbedURL =
             "https://embed.figma.com/proto/KKDyT3kwtV0TAQDjWK84SO/" +
             "%EC%95%B1%EB%94%94%EC%9E%90%EC%9D%B8-%EC%96%91%EC%9C%A4%EC%A0%95" +
             "?node-id=95-973" +
@@ -1917,17 +1928,30 @@
             "&show-proto-sidebar=0" +
             "&embed-host=share";
 
+        // 모바일 기준: 767px 이하
+        const mobileQuery = window.matchMedia("(max-width: 767px)");
+
         function createFigmaFrame() {
             const iframe = document.createElement("iframe");
-            iframe.src = figmaURL;
+
+            iframe.src = figmaEmbedURL;
             iframe.title = "READY. Interactive Figma Prototype";
-            iframe.allowFullscreen = true;
+            iframe.setAttribute("allowfullscreen", "");
             iframe.setAttribute("allow", "fullscreen");
+            iframe.setAttribute("loading", "eager");
 
             frameContainer.replaceChildren(iframe);
         }
 
         launchButton.addEventListener("click", () => {
+
+            // 모바일: Figma 원본을 새 탭으로 열기
+            if (mobileQuery.matches) {
+            window.open(figmaOriginalURL, "_blank", "noopener,noreferrer");
+            return;
+            }
+
+            // PC / 태블릿: 기존 페이지 내부에서 실행
             experience.hidden = false;
             section.classList.add("is-launched");
             launchButton.setAttribute("aria-expanded", "true");
@@ -1936,10 +1960,11 @@
 
             experience.scrollIntoView({
             behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-                ? "instant"
+                ? "auto"
                 : "smooth",
             block: "start"
             });
+
         });
 
         restartButton.addEventListener("click", () => {
@@ -1948,6 +1973,7 @@
 
         });
         </script>
+
 
 
 
