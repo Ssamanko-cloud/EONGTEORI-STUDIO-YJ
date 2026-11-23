@@ -770,6 +770,698 @@
 
   }
 
+  /* ==========================================
+   ECLYRA — BEHIND THE FILM SLIDERS
+========================================== */
+
+document.querySelectorAll('.esy-eclyra-behind-slider').forEach((slider) => {
+
+  new Swiper(slider, {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: 600,
+
+    pagination: {
+      el: slider.querySelector('.swiper-pagination'),
+      clickable: true
+    }
+  });
+
+});
+
+
+/* ==========================================
+   AUREON — THE IDEA
+   STATIC CITY / SCROLL TIME EFFECTS
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const section = document.querySelector(".esy-aureon-idea");
+
+  // 다른 프로젝트 페이지에서는 실행하지 않음
+  if (!section) return;
+
+  const panels = [
+    ...section.querySelectorAll(".esy-aureon-idea__panel")
+  ];
+
+  const progressFill = section.querySelector(
+    ".esy-aureon-idea__progress-fill"
+  );
+
+  const phases = [
+    "normal",
+    "slow",
+    "fast",
+    "freeze",
+    "reveal"
+  ];
+
+  if (panels.length !== phases.length) return;
+
+  let currentStep = -1;
+  let ticking = false;
+
+  /* ======================================
+     CHANGE ACTIVE PHASE
+  ======================================= */
+
+  function setPhase(step) {
+
+    if (step === currentStep) return;
+
+    currentStep = step;
+
+    // 현재 시간 단계
+    section.dataset.phase = phases[step];
+
+    // 중앙 텍스트 전환
+    panels.forEach((panel, index) => {
+      const isActive = index === step;
+
+      panel.classList.toggle("is-active", isActive);
+      panel.setAttribute("aria-hidden", String(!isActive));
+    });
+
+  }
+
+  /* ======================================
+     SCROLL PROGRESS
+  ======================================= */
+
+  function updateScroll() {
+
+    ticking = false;
+
+    const rect = section.getBoundingClientRect();
+
+    const scrollDistance =
+      section.offsetHeight - window.innerHeight;
+
+    if (scrollDistance <= 0) return;
+
+    // 0 ~ 1 사이의 진행률
+    const progress = Math.max(
+      0,
+      Math.min(1, -rect.top / scrollDistance)
+    );
+
+    // 5개 시간 단계로 나누기
+    const step = Math.min(
+      phases.length - 1,
+      Math.floor(progress * phases.length)
+    );
+
+    setPhase(step);
+
+    // 오른쪽 진행 표시
+    if (progressFill) {
+      progressFill.style.height = `${progress * 100}%`;
+    }
+
+  }
+
+  /* ======================================
+     PERFORMANCE OPTIMIZATION
+  ======================================= */
+
+  function requestUpdate() {
+
+    if (ticking) return;
+
+    ticking = true;
+
+    requestAnimationFrame(updateScroll);
+
+  }
+
+  /* ======================================
+     EVENT LISTENERS
+  ======================================= */
+
+  window.addEventListener(
+    "scroll",
+    requestUpdate,
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "resize",
+    requestUpdate
+  );
+
+  // 최초 화면 상태 설정
+  requestUpdate();
+
+});
+
+
+
+/* ==========================================
+   AUREON — FINAL FILM
+   COUNTDOWN / GOLD REVEAL / AUTOPLAY
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const section = document.querySelector(".esy-aureon-film");
+  if (!section) return;
+
+  const videoWrap = section.querySelector(
+    ".esy-aureon-film-video"
+  );
+
+  const countdown = section.querySelector(
+    ".esy-aureon-film-countdown"
+  );
+
+  const number = section.querySelector(
+    ".esy-aureon-film-number"
+  );
+
+  const video = section.querySelector(
+    ".esy-aureon-film-video video"
+  );
+
+  if (!videoWrap || !countdown || !number || !video) return;
+
+  let hasStarted = false;
+  let hasFinished = false;
+
+  /* ======================================
+     AUTOPLAY PREPARATION
+  ======================================= */
+
+  // 브라우저 자동 재생 정책 대응
+  video.muted = true;
+  video.playsInline = true;
+  video.autoplay = false;
+
+  /* ======================================
+     COUNTDOWN NUMBER
+  ======================================= */
+
+  function changeNumber(value) {
+
+    number.classList.remove("is-changing");
+
+    void number.offsetWidth;
+
+    number.textContent = value;
+    number.classList.add("is-changing");
+
+  }
+
+  /* ======================================
+     COUNTDOWN SEQUENCE
+  ======================================= */
+
+  function startCountdown() {
+
+    if (hasStarted || hasFinished) return;
+
+    hasStarted = true;
+
+    videoWrap.classList.add("is-counting");
+
+    changeNumber("03");
+
+    setTimeout(() => {
+      changeNumber("02");
+    }, 1000);
+
+    setTimeout(() => {
+      changeNumber("01");
+    }, 2000);
+
+    setTimeout(() => {
+      changeNumber("00");
+    }, 3000);
+
+    // 골드 플래시 시작
+    setTimeout(() => {
+      videoWrap.classList.add("is-flashing");
+    }, 4000);
+
+    // 영상 공개 + 자동 재생
+    setTimeout(() => {
+
+      videoWrap.classList.add("is-revealed");
+      videoWrap.classList.remove("is-counting");
+
+      hasFinished = true;
+
+      video.currentTime = 0;
+
+      const playPromise = video.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.warn(
+            "AUREON autoplay was blocked:",
+            error
+          );
+        });
+      }
+
+    }, 4800);
+
+  }
+
+  /* ======================================
+     INTERSECTION OBSERVER
+  ======================================= */
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting && !hasStarted) {
+          startCountdown();
+          observer.disconnect();
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.45
+    }
+  );
+
+  
+  /* ======================================
+    SOUND ON / OFF
+  ======================================= */
+
+  const soundButton = section.querySelector(
+    ".esy-aureon-film-sound"
+  );
+
+  const soundText = section.querySelector(
+    ".esy-aureon-film-sound-text"
+  );
+
+  function updateSoundButton() {
+    if (!soundButton || !soundText) return;
+
+    const soundEnabled = !video.muted && video.volume > 0;
+
+    soundText.textContent = soundEnabled
+      ? "SOUND OFF"
+      : "SOUND ON";
+
+    soundButton.setAttribute(
+      "aria-pressed",
+      String(soundEnabled)
+    );
+
+    soundButton.setAttribute(
+      "aria-label",
+      soundEnabled ? "영상 소리 끄기" : "영상 소리 켜기"
+    );
+  }
+
+  if (soundButton) {
+    soundButton.addEventListener("click", () => {
+      if (video.muted || video.volume === 0) {
+        video.volume = 1;
+        video.muted = false;
+      } else {
+        video.muted = true;
+      }
+
+      updateSoundButton();
+    });
+
+    // 기본 영상 컨트롤에서 음량을 바꿔도 버튼 동기화
+    video.addEventListener("volumechange", updateSoundButton);
+
+    updateSoundButton();
+  }
+  observer.observe(videoWrap);
+
+});
+
+
+/* ==========================================
+   AUREON — BEHIND THE FILM
+   SWIPER / GLIGHTBOX / REWIND / REPLAY
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const section = document.querySelector(".esy-aureon-behind");
+
+  // 해당 섹션이 없는 페이지에서는 실행하지 않음
+  if (!section) return;
+
+
+  /* ======================================
+     SWIPER — PRODUCTION GALLERIES
+  ======================================= */
+
+  const galleries = section.querySelectorAll(
+    ".esy-aureon-behind-gallery.swiper"
+  );
+
+  if (typeof Swiper !== "undefined") {
+
+    galleries.forEach((gallery) => {
+
+      // 다른 코드에서 이미 초기화한 경우 중복 방지
+      if (gallery.swiper) return;
+
+      const slides = gallery.querySelectorAll(".swiper-slide");
+      const pagination = gallery.querySelector(".swiper-pagination");
+
+      const hasMultipleSlides = slides.length > 1;
+
+      new Swiper(gallery, {
+
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 650,
+
+        loop: hasMultipleSlides,
+
+        grabCursor: hasMultipleSlides,
+        allowTouchMove: hasMultipleSlides,
+        simulateTouch: hasMultipleSlides,
+
+        pagination: {
+          el: pagination,
+          clickable: hasMultipleSlides
+        },
+
+        a11y: {
+          enabled: true
+        }
+
+      });
+
+      // 이미지가 한 장이면 페이지네이션 숨김
+      if (!hasMultipleSlides && pagination) {
+        pagination.style.display = "none";
+      }
+
+    });
+
+  } else {
+    console.warn("AUREON BEHIND: Swiper is not loaded.");
+  }
+
+
+  /* ======================================
+     GLIGHTBOX — IMAGE ZOOM
+  ======================================= */
+
+  if (typeof GLightbox !== "undefined") {
+
+    GLightbox({
+      selector: ".esy-aureon-behind .glightbox",
+      touchNavigation: true,
+      loop: false,
+      autoplayVideos: false
+    });
+
+  } else {
+    console.warn("AUREON BEHIND: GLightbox is not loaded.");
+  }
+
+
+  /* ======================================
+     REWIND TIMELINE
+  ======================================= */
+
+  const rewind = section.querySelector(
+    ".esy-aureon-behind-rewind"
+  );
+
+  if (!rewind) return;
+
+  const replayButton = rewind.querySelector(
+    ".esy-aureon-behind-replay"
+  );
+
+  const progress = rewind.querySelector(
+    ".esy-aureon-behind-rewind-progress"
+  );
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  let hasRewound = false;
+
+
+  /* ======================================
+     PLAY / REPLAY
+  ======================================= */
+
+  function playRewind() {
+
+    if (!progress) return;
+
+    // 움직임 최소화 설정 시 애니메이션 생략
+    if (prefersReducedMotion) {
+      rewind.classList.add("is-active");
+      return;
+    }
+
+    // 기존 애니메이션 제거
+    rewind.classList.remove("is-active");
+
+    // 브라우저가 초기 상태를 반영하도록 강제
+    void progress.offsetWidth;
+
+    // 애니메이션 다시 시작
+    rewind.classList.add("is-active");
+
+  }
+
+
+  /* ======================================
+     REPLAY BUTTON
+  ======================================= */
+
+  if (replayButton) {
+
+    replayButton.addEventListener("click", () => {
+      playRewind();
+    });
+
+  }
+
+
+  /* ======================================
+     FIRST SCROLL ACTIVATION
+  ======================================= */
+
+  function startRewind() {
+
+    // 자동 재생은 최초 한 번만
+    if (hasRewound) return;
+
+    hasRewound = true;
+    playRewind();
+
+  }
+
+
+  /* ======================================
+     REDUCED MOTION
+  ======================================= */
+
+  if (prefersReducedMotion) {
+    startRewind();
+    return;
+  }
+
+
+  /* ======================================
+     INTERSECTION OBSERVER
+  ======================================= */
+
+  if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            startRewind();
+            observer.disconnect();
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.35
+      }
+    );
+
+    observer.observe(rewind);
+
+  } else {
+
+    // 미지원 브라우저에서는 바로 실행
+    startRewind();
+
+  }
+
+});
+
+
+/* ==========================================
+   AUREON — WELL, I THINK...
+   THE MOMENT TIME STOPS
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const section = document.querySelector(
+    ".esy-aureon-conclusion"
+  );
+
+  if (!section) return;
+
+  const clockHand = section.querySelector(
+    ".esy-aureon-conclusion-clock-hand"
+  );
+
+  const twist = section.querySelector(
+    ".esy-aureon-conclusion-twist"
+  );
+
+  if (!clockHand || !twist) return;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  let hasPlayed = false;
+
+  /* ==========================================
+     INITIAL STATE
+  ========================================== */
+
+  if (!reduceMotion) {
+
+    twist.style.opacity = "0";
+    twist.style.transform = "translateY(18px)";
+
+  }
+
+  /* ==========================================
+     CLOCK ANIMATION
+  ========================================== */
+
+  function playConclusion() {
+
+    if (hasPlayed) return;
+
+    hasPlayed = true;
+
+    if (reduceMotion) {
+      twist.style.opacity = "1";
+      twist.style.transform = "none";
+      return;
+    }
+
+    /* CLOCK HAND — ROTATE AND STOP */
+
+    clockHand.animate(
+      [
+        {
+          transform:
+            "translate(-50%, -100%) rotate(0deg)"
+        },
+        {
+          transform:
+            "translate(-50%, -100%) rotate(720deg)"
+        }
+      ],
+      {
+        duration: 2400,
+        easing: "cubic-bezier(.35, 0, .15, 1)",
+        fill: "forwards"
+      }
+    );
+
+    /* TWIST — APPEAR AFTER CLOCK STOPS */
+
+    window.setTimeout(() => {
+
+      twist.animate(
+        [
+          {
+            opacity: 0,
+            transform: "translateY(18px)"
+          },
+          {
+            opacity: 1,
+            transform: "translateY(0)"
+          }
+        ],
+        {
+          duration: 900,
+          easing: "ease-out",
+          fill: "forwards"
+        }
+      );
+
+      twist.style.opacity = "1";
+      twist.style.transform = "none";
+
+    }, 2500);
+
+  }
+
+  /* ==========================================
+     SCROLL OBSERVER
+  ========================================== */
+
+  if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            playConclusion();
+            observer.disconnect();
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.35
+      }
+    );
+
+    observer.observe(section);
+
+  } else {
+
+    playConclusion();
+
+  }
+
+});
+
+
 
 
 })();
