@@ -155,7 +155,7 @@
                                 <!-- LEFT: CHARACTER -->
                                 <div class="esy-sucre-observation-visual">
                                     <div class="esy-sucre-observation-image-wrap">
-                                        <img id="esy-sucre-observation-image" src="../assets/img/portfolio/Sweetnie_F.png" alt="" loading="lazy">
+                                        <img id="esy-sucre-observation-image" src="../assets/img/portfolio/Sucremelly/Suc_Sweet_F01.png" alt="" loading="lazy">
                                     </div>
 
                                     <span class="esy-sucre-observation-stamp">
@@ -220,37 +220,41 @@
                                 </div>
                             </div>
 
-                                <!-- GORGEOUCHE'S MEMO -->
-                                <div class="esy-sucre-observation-memo">
-                                    <div class="esy-sucre-observation-memo-heading">
-                                        <span>MANAGER'S COMMENT</span>
-                                        <span class="esy-sucre-observation-memo-mark">✳</span>
-                                    </div>
-
-                                    <p id="esy-sucre-observation-comment">
-                                        디저트는 너무너무 맛있고 예쁜데…
-                                        매일 접시를 깨는 건 그만둬 주세요…
-                                    </p>
-
-                                    <span class="esy-sucre-observation-signature">
-                                        — Gorgeouche · Main Hall Manager
-                                    </span>
+                                
+                            <!-- GORGEOUCHE'S MEMO -->
+                            <div class="esy-sucre-observation-memo">
+                                <div class="esy-sucre-observation-memo-heading">
+                                    <span>MANAGER'S COMMENT</span>
+                                    <span class="esy-sucre-observation-memo-mark">✳</span>
                                 </div>
 
-                                <div class="esy-sucre-observation-paper-bottom">
-                                    <span>SUCREMELLY STAFF ARCHIVE</span>
-                                    <span>END OF RECORD.</span>
-                                </div>
+                                <p id="esy-sucre-observation-comment">
+                                    디저트는 너무너무 맛있고 예쁜데…
+                                    매일 접시를 깨는 건 그만둬 주세요…
+                                </p>
+
+                                <span class="esy-sucre-observation-signature">
+                                    — Gorgeouche · Main Hall Manager
+                                </span>
+                            </div>
+
+                            <div class="esy-sucre-observation-paper-bottom">
+                                <span>SUCREMELLY STAFF ARCHIVE</span>
+                                <span>END OF RECORD.</span>
+                            </div>
 
                         </div>
+                            <p class="esy-sucre-observation-footnote">
+                            ※ 본 기록은 메인 홀 매니저의 개인적인 관찰에 기반합니다.
+                            </p>
 
-                        <p class="esy-sucre-observation-footnote">
-                        ※ 본 기록은 메인 홀 매니저의 개인적인 관찰에 기반합니다.
-                        </p>
-                     </div>
+                    </div>
 
                 </div>
+
             </section>
+
+                         
 
             <!-- SUCREMELLY — LITTLE STORYBOOK -->
             <section id="sucre-character-storybook" class="esy-sucre-storybook">
@@ -871,7 +875,7 @@
                         </div>
 
                     </div>
-
+                
                 </div>
             </section>
 
@@ -1005,8 +1009,8 @@
                 file: "001",
                 name: "SWEETNIE",
                 role: "DESSERT CHEF",
-                image: "../assets/img/portfolio/Sweetnie_F.png",
-                accent: "#D6E8FF",
+                image: "../assets/img/portfolio/Sucremelly/Suc_Sweet_F01.png",
+                accent: "#fffcf5",
 
                 personality:
                     "조심스럽고 소심하지만 은근한 사고뭉치.\n" +
@@ -1031,8 +1035,8 @@
                 file: "002",
                 name: "KINGSTE",
                 role: "TEA MASTER",
-                image: "../assets/img/portfolio/Kingste_F.png",
-                accent: "#CFEAD6",
+                image: "../assets/img/portfolio/Sucremelly/Suc_Kings_F01.png",
+                accent: "#fffcf5",
 
                 personality:
                     "조용하고 든든한 GENTLEMAN.\n" +
@@ -1059,8 +1063,8 @@
                 file: "003",
                 name: "MELLOBOLLER",
                 role: "CHOCOLATIER",
-                image: "../assets/img/portfolio/Melloboller_F.png",
-                accent: "#FAD4E1",
+                image: "../assets/img/portfolio/Sucremelly/Suc_Mello_F01.png",
+                accent: "#fffcf5",
 
                 personality:
                     "호기심 가득한 행동파이자 천재 쇼콜라티에!\n" +
@@ -1613,22 +1617,22 @@
                     sweetnie: {
                         name: "SWEETNIE",
                         accent: "#D6E8FF",
-                        sketch: "",
-                        render: ""
+                        sketch: "../assets/img/portfolio/Sucremelly/Suc_Sweet_F_2D.png",
+                        render: "../assets/img/portfolio/Sucremelly/Suc_Sweet_F_3D.png"
                     },
 
                     kingste: {
                         name: "KINGSTE",
                         accent: "#CFEAD6",
-                        sketch: "",
-                        render: ""
+                        sketch: "../assets/img/portfolio/Sucremelly/Suc_Kings_F_2D.png",
+                        render: "../assets/img/portfolio/Sucremelly/Suc_Kings_F_3D.png"
                     },
 
                     melloboller: {
                         name: "MELLOBOLLER",
                         accent: "#FAD4E1",
-                        sketch: "",
-                        render: ""
+                        sketch: "../assets/img/portfolio/Sucremelly/Suc_Mello_F_2D.png",
+                        render: "../assets/img/portfolio/Sucremelly/Suc_Mello_F_3D.png"
                     }
                 };
 
@@ -1722,6 +1726,8 @@
 
                     currentCharacter = key;
 
+                    stage.classList.add("is-switching");
+
                     resetTransformation();
 
                     section.style.setProperty(
@@ -1752,6 +1758,12 @@
                             "aria-pressed",
                             String(active)
                         );
+                    });
+
+                    void stage.offsetWidth;
+
+                    requestAnimationFrame(() => {
+                        stage.classList.remove("is-switching");
                     });
                 }
 
@@ -1840,9 +1852,9 @@
                         accent: "#D6E8FF",
                         colors: ["#D6E8FF", "#FFE8A7", "#FFF7EC"],
                         views: {
-                            front: "",
-                            side: "",
-                            back: ""
+                            front: "../assets/img/portfolio/Sucremelly/Sweetnie_F.png",
+                            side: "../assets/img/portfolio/Sucremelly/Sweetnie_S.png",
+                            back: "../assets/img/portfolio/Sucremelly/Sweetnie_B.png"
                         },
                         details: [
                             "폭신하게 늘어진 하늘색 토끼 귀",
@@ -1854,7 +1866,7 @@
                             {
                                 name: "PUDDING PLUSH",
                                 description: "스위트니가 아끼는 푸딩 인형",
-                                image: ""
+                                image: "../assets/img/portfolio/Sucremelly/Sweetnie_Pudding_F.png"
                             }
                         ]
                     },
@@ -1867,9 +1879,9 @@
                         accent: "#CFEAD6",
                         colors: ["#CFEAD6", "#5B3A2E", "#FFF7EC"],
                         views: {
-                            front: "",
-                            side: "",
-                            back: ""
+                            front: "../assets/img/portfolio/Sucremelly/Kingste_F.png",
+                            side: "../assets/img/portfolio/Sucremelly/Kingste_S.png",
+                            back: "../assets/img/portfolio/Sucremelly/Kingste_B.png"
                         },
                         details: [
                             "차분한 민트색 털과 늘어진 강아지 귀",
@@ -1881,7 +1893,7 @@
                             {
                                 name: "RABBIT TUMBLER",
                                 description: "토끼 모양의 음료 텀블러",
-                                image: ""
+                                image: "../assets/img/portfolio/Sucremelly/Kingste_Tumbler.png"
                             }
                         ]
                     },
@@ -1894,9 +1906,9 @@
                         accent: "#FAD4E1",
                         colors: ["#FAD4E1", "#5B3A2E", "#FFE8A7"],
                         views: {
-                            front: "",
-                            side: "",
-                            back: ""
+                            front: "../assets/img/portfolio/Sucremelly/Melloboller_F.png",
+                            side: "../assets/img/portfolio/Sucremelly/Melloboller_S.png",
+                            back: "../assets/img/portfolio/Sucremelly/Melloboller_B.png"
                         },
                         details: [
                             "생기 넘치는 분홍색 털과 고양이 귀",
@@ -1908,7 +1920,7 @@
                             {
                                 name: "RABBIT PHONE",
                                 description: "사진 촬영을 즐기는 멜로볼러의 토끼 휴대폰",
-                                image: ""
+                                image: "../assets/img/portfolio/Sucremelly/Melloboller_Cellphone.png"
                             }
                         ]
                     }

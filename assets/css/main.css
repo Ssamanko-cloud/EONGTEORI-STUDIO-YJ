@@ -28630,8 +28630,8 @@
 
 .esy-sucre-transform-image img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 85%;
+  height: 85%;
   object-fit: contain;
   filter: drop-shadow(0 20px 20px rgba(0,0,0,.12));
 }
@@ -28717,6 +28717,13 @@
 }
 .esy-sucre-transform-sparkles span:nth-child(8) {
   top: 48%; left: 69%;
+}
+
+/* INSTANT RESET WHEN SWITCHING CHARACTERS */
+
+.esy-sucre-transform-stage.is-switching
+.esy-sucre-transform-image {
+  transition: none;
 }
 
 /* TRANSFORMATION STATES */
@@ -29134,10 +29141,13 @@
 }
 
 .esy-sucre-lab-model-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  display: block;
+  width: 80%;
+  height: 80%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .esy-sucre-lab-model-image img[hidden] {
@@ -29445,18 +29455,23 @@
 }
 
 .esy-sucre-lab-accessory-image {
-    display: grid;
-    place-items: center;
-    height: 170px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    background: var(--lab-accent);
+  display: grid;
+  place-items: center;
+  height: 230px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background: var(--lab-accent);
+  overflow: hidden;
 }
 
 .esy-sucre-lab-accessory-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  display: block;
+  width: 70%;
+  height: 70%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .esy-sucre-lab-accessory-image span {
@@ -29680,242 +29695,6 @@
         transform: rotate(360deg);
     }
 }
-
-
-
-/* ==========================================
-   SUCREMELLY — EXPLORE BRANDING
-========================================== */
-
-.esy-sucre-character-explore {
-    position: relative;
-    padding: 120px 0 135px;
-    background: #FFF7EC;
-    color: #5B3A2E;
-    overflow: hidden;
-}
-
-.esy-sucre-character-explore-meta {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 95px;
-
-    color: #5B3A2E;
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .12em;
-}
-
-.esy-sucre-character-explore-inner {
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    align-items: center;
-    gap: 70px;
-    min-height: 450px;
-}
-
-/* COPY */
-
-.esy-sucre-character-explore-eyebrow {
-    display: block;
-    margin-bottom: 25px;
-
-    color: #A77C6A;
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .13em;
-}
-
-.esy-sucre-character-explore-copy h2 {
-    margin: 0;
-    color: #5B3A2E;
-    font-family: "IBM Plex Sans KR", sans-serif;
-    font-size: clamp(36px, 4vw, 62px);
-    font-weight: 600;
-    line-height: 1.45;
-    letter-spacing: -.055em;
-}
-
-.esy-sucre-character-explore-copy h2 span {
-    color: #A77C6A;
-}
-
-.esy-sucre-character-explore-copy p {
-    margin: 30px 0 35px;
-    color: #795548;
-    font-size: 16px;
-    line-height: 2;
-}
-
-/* BRAND LINK */
-
-.esy-sucre-character-explore-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 45px;
-
-    padding: 17px 23px;
-    border: 1px solid #5B3A2E;
-    border-radius: 50px;
-
-    background: #5B3A2E;
-    color: #FFF7EC;
-
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-decoration: none;
-
-    transition:
-        background .3s ease,
-        color .3s ease,
-        transform .3s ease;
-}
-
-.esy-sucre-character-explore-link:hover {
-    background: transparent;
-    color: #5B3A2E;
-    transform: translateY(-4px);
-}
-
-.esy-sucre-character-explore-link span {
-    font-size: 19px;
-    transition: transform .3s ease;
-}
-
-.esy-sucre-character-explore-link:hover span {
-    transform: translate(3px, -3px);
-}
-
-/* ORBIT ART */
-
-.esy-sucre-character-explore-art {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.esy-sucre-character-explore-circle {
-    position: relative;
-    display: grid;
-    place-items: center;
-
-    width: min(100%, 390px);
-    aspect-ratio: 1;
-
-    border: 1px solid #DCC5B3;
-    border-radius: 50%;
-    background: #F9F0E5;
-}
-
-.esy-sucre-character-explore-circle::before,
-.esy-sucre-character-explore-circle::after {
-    content: "";
-    position: absolute;
-    inset: 30px;
-    border: 1px dashed #DCC5B3;
-    border-radius: 50%;
-}
-
-.esy-sucre-character-explore-circle::after {
-    inset: 65px;
-    border-style: solid;
-}
-
-.esy-sucre-character-explore-center {
-    position: relative;
-    z-index: 2;
-
-    color: #5B3A2E;
-    font-family: "Space Grotesk", sans-serif;
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -.06em;
-    text-align: center;
-}
-
-.esy-sucre-character-explore-star {
-    position: absolute;
-    top: 10%;
-    right: 15%;
-    z-index: 3;
-
-    color: #A77C6A;
-    font-size: 35px;
-
-    animation: esy-character-star-spin 8s linear infinite;
-}
-
-.esy-sucre-character-explore-orbit {
-    position: absolute;
-    z-index: 3;
-
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-
-    box-shadow: 0 8px 20px rgba(91,58,46,.12);
-    animation: esy-character-orbit-float 3s ease-in-out infinite;
-}
-
-.esy-sucre-character-explore-orbit-blue {
-    top: 17%;
-    left: 12%;
-    background: #D6E8FF;
-}
-
-.esy-sucre-character-explore-orbit-mint {
-    right: 4%;
-    top: 52%;
-    width: 45px;
-    height: 45px;
-    background: #CFEAD6;
-    animation-delay: .5s;
-}
-
-.esy-sucre-character-explore-orbit-pink {
-    bottom: 12%;
-    left: 24%;
-    width: 28px;
-    height: 28px;
-    background: #FAD4E1;
-    animation-delay: 1s;
-}
-
-.esy-sucre-character-explore-caption {
-    color: #795548;
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .13em;
-    text-align: center;
-}
-
-@keyframes esy-character-star-spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes esy-character-orbit-float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-}
-
-
 
 
 
@@ -30224,5 +30003,1008 @@
   .esy-sucre-character-ending-arrow {
     transform: none;
   }
+}
+
+
+
+
+/* ==========================================
+   SUCREMELLY TEASER — THE QUESTION
+========================================== */
+
+.esy-sucre-teaser-question {
+  background-color: #FFF7EC;
+  color: #5B3A2E;
+}
+
+.esy-sucre-teaser-question-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+  padding: 120px 0;
+  text-align: center;
+}
+
+.esy-sucre-teaser-question-label {
+  display: block;
+  margin-bottom: 22px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #9A7768;
+}
+
+.esy-sucre-teaser-question-title {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(48px, 9vw, 112px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+  color: #5B3A2E;
+}
+
+.esy-sucre-teaser-question-subtitle {
+  margin: 20px 0 0;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: clamp(17px, 2vw, 24px);
+  font-weight: 400;
+  color: #5B3A2E;
+}
+
+/* SCROLL LINK */
+
+.esy-sucre-teaser-question-scroll {
+  position: absolute;
+  bottom: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #9A7768;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.esy-sucre-teaser-question-scroll:hover,
+.esy-sucre-teaser-question-scroll:focus-visible {
+  color: #5B3A2E;
+  text-decoration: none;
+}
+
+.esy-sucre-teaser-question-scroll i {
+  font-size: 20px;
+  animation: esy-sucre-teaser-scroll 2s ease-in-out infinite;
+}
+
+@keyframes esy-sucre-teaser-scroll {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+/* SMOOTH SCROLL */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .esy-sucre-teaser-question-inner {
+    min-height: 65vh;
+    padding: 100px 0;
+  }
+
+  .esy-sucre-teaser-question-scroll {
+    bottom: 28px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .esy-sucre-teaser-question-scroll {
+    transition: none;
+  }
+
+  .esy-sucre-teaser-question-scroll i {
+    animation: none;
+  }
+}
+
+
+/* ==========================================
+   SUCREMELLY TEASER — THE IDEA
+========================================== */
+
+.esy-sucre-teaser-idea {
+  padding: 110px 0 120px;
+  background-color: #FFF7EC;
+  color: #5B3A2E;
+}
+
+/* HEADING */
+
+.esy-sucre-teaser-idea-heading {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.esy-sucre-teaser-idea-label {
+  display: block;
+  margin-bottom: 16px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #9A7768;
+}
+
+.esy-sucre-teaser-idea-heading h2 {
+  margin: 0 0 12px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #5B3A2E;
+}
+
+.esy-sucre-teaser-idea-heading p {
+  margin: 0;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 17px;
+}
+
+/* IMAGE */
+
+.esy-sucre-teaser-idea-scene {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  background: #FAD4E1;
+}
+
+.esy-sucre-teaser-idea-scene > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+
+/* CLUE BUTTONS */
+
+.esy-sucre-teaser-clue {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.esy-sucre-teaser-clue-book {
+  left: 27%;
+  top: 57%;
+}
+
+.esy-sucre-teaser-clue-gift {
+  left: 76%;
+  top: 65%;
+}
+
+.esy-sucre-teaser-clue-mint {
+  left: 49%;
+  top: 75%;
+}
+
+.esy-sucre-teaser-clue-dot {
+  width: 15px;
+  height: 15px;
+  border: 3px solid #FFF7EC;
+  border-radius: 50%;
+  background: #FFE8A7;
+  box-shadow: 0 0 0 7px rgba(255, 232, 167, 0.35);
+  transition: transform 0.25s ease;
+}
+
+.esy-sucre-teaser-clue:hover .esy-sucre-teaser-clue-dot,
+.esy-sucre-teaser-clue:focus-visible .esy-sucre-teaser-clue-dot {
+  transform: scale(1.25);
+}
+
+/* TOOLTIPS */
+
+.esy-sucre-teaser-clue-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  padding: 9px 13px;
+  border-radius: 8px;
+  background: #FFF7EC;
+  color: #5B3A2E;
+  box-shadow: 0 6px 20px rgba(91, 58, 46, 0.15);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 6px);
+  transition: opacity 0.2s ease, transform 0.2s ease,
+              visibility 0.2s ease;
+}
+
+.esy-sucre-teaser-clue:hover .esy-sucre-teaser-clue-tooltip,
+.esy-sucre-teaser-clue:focus-visible .esy-sucre-teaser-clue-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* BOTTOM HINT */
+
+.esy-sucre-teaser-idea-hint {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #9A7768;
+}
+
+/* DESCRIPTION */
+
+.esy-sucre-teaser-idea-description {
+  max-width: 700px;
+  margin: 65px auto 0;
+  text-align: center;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.esy-sucre-teaser-idea-description p {
+  margin: 0 0 18px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .esy-sucre-teaser-idea {
+    padding: 75px 0;
+  }
+
+  .esy-sucre-teaser-idea-heading {
+    margin-bottom: 32px;
+  }
+
+  .esy-sucre-teaser-idea-hint {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 9px;
+  }
+
+  .esy-sucre-teaser-idea-description {
+    margin-top: 40px;
+    font-size: 14px;
+  }
+
+  .esy-sucre-teaser-clue-tooltip {
+    font-size: 9px;
+    padding: 7px 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .esy-sucre-teaser-clue-dot,
+  .esy-sucre-teaser-clue-tooltip {
+    transition: none;
+  }
+}
+
+
+/* ==========================================
+   SUCREMELLY TEASER — PROJECT CREDITS
+========================================== */
+
+.esy-sucre-teaser-credits {
+  background-color: #FFF7EC;
+  padding: 0;
+}
+
+.esy-sucre-teaser-credits-inner {
+  width: 100%;
+  background-color: #F7EBDD;
+}
+
+.esy-sucre-teaser-credits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 2fr 1.2fr 0.8fr;
+  gap: 28px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 35px 24px;
+}
+
+.esy-sucre-teaser-credit-item {
+  min-width: 0;
+}
+
+.esy-sucre-teaser-credit-label {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #9A7768;
+  margin-bottom: 14px;
+}
+
+.esy-sucre-teaser-credit-value {
+  font-family: "Space Grotesk", "IBM Plex Sans KR", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #5B3A2E;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+/* TABLET */
+
+@media (max-width: 991px) {
+  .esy-sucre-teaser-credits-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px 24px;
+  }
+
+  .esy-sucre-teaser-credit-item:nth-child(3) {
+    grid-row: span 2;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .esy-sucre-teaser-credits {
+    padding: 0;
+  }
+
+  .esy-sucre-teaser-credits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 2fr 1.2fr 0.8fr;
+  gap: 28px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 48px 24px;
+}
+
+  .esy-sucre-teaser-credit-item:nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .esy-sucre-teaser-credit-value {
+    font-size: 12px;
+  }
+}
+
+
+/* ==========================================
+   SUCREMELLY TEASER — FINAL FILM
+========================================== */
+
+.esy-sucre-teaser-film {
+  padding: 110px 0 120px;
+  background-color: #FFF7EC;
+  color: #5B3A2E;
+}
+
+.esy-sucre-teaser-film-heading {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.esy-sucre-teaser-film-heading > span {
+  display: block;
+  margin-bottom: 16px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #9A7768;
+}
+
+.esy-sucre-teaser-film-heading h2 {
+  margin: 0 0 12px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #5B3A2E;
+}
+
+.esy-sucre-teaser-film-heading p {
+  margin: 0;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 17px;
+}
+
+/* VIDEO */
+
+.esy-sucre-teaser-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: #5B3A2E;
+}
+
+.esy-sucre-teaser-video-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #5B3A2E;
+  cursor: pointer;
+}
+
+.esy-sucre-teaser-video-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.esy-sucre-teaser-video-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 24, 18, 0.25);
+}
+
+.esy-sucre-teaser-play {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 2px solid #FFF7EC;
+  border-radius: 50%;
+  color: #FFF7EC;
+  font-size: 32px;
+  transition: transform 0.25s ease,
+              background-color 0.25s ease;
+}
+
+.esy-sucre-teaser-video-cover:hover .esy-sucre-teaser-play,
+.esy-sucre-teaser-video-cover:focus-visible .esy-sucre-teaser-play {
+  transform: scale(1.1);
+  background-color: rgba(255, 247, 236, 0.18);
+}
+
+.esy-sucre-teaser-video-prompt {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #FFF7EC;
+}
+
+.esy-sucre-teaser-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.esy-sucre-teaser-film-caption {
+  margin: 18px 0 0;
+  text-align: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #9A7768;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .esy-sucre-teaser-film {
+    padding: 75px 0;
+  }
+
+  .esy-sucre-teaser-film-heading {
+    margin-bottom: 32px;
+  }
+
+  .esy-sucre-teaser-film-heading p {
+    font-size: 15px;
+  }
+
+  .esy-sucre-teaser-play {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+
+  .esy-sucre-teaser-video-prompt {
+    margin-top: 14px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .esy-sucre-teaser-play {
+    transition: none;
+  }
+}
+
+
+/* ==========================================
+   SUCREMELLY TEASER — WELL, I THINK...
+========================================== */
+
+.esy-sucre-teaser-ending {
+  background-color: #FFF7EC;
+  padding: 110px 0 115px;
+}
+
+.esy-sucre-teaser-ending-inner {
+  width: 100%;
+}
+
+/* PROJECT META */
+
+.esy-sucre-teaser-ending-meta {
+  display: flex;
+  justify-content: flex-end;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: #9A7768;
+}
+
+/* CONCLUSION */
+
+.esy-sucre-teaser-ending-content {
+  text-align: center;
+  padding: 115px 0 135px;
+}
+
+.esy-sucre-teaser-ending-label {
+  display: block;
+  margin-bottom: 30px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  color: #9A7768;
+}
+
+.esy-sucre-teaser-ending-content h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(34px, 4.5vw, 62px);
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: -.045em;
+  color: #5B3A2E;
+}
+
+.esy-sucre-teaser-ending-content h2 span {
+  color: #5B3A2E;
+}
+
+.esy-sucre-teaser-ending-signature {
+  margin: 35px 0 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: #9A7768;
+}
+
+/* ==========================================
+   NEXT QUESTION — STUDIO COMMON STYLE
+========================================== */
+
+.esy-sucre-teaser-conclusion-next {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 40px;
+}
+
+.esy-sucre-teaser-conclusion-next-title {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  color: #62546A;
+}
+
+.esy-sucre-teaser-conclusion-next-desc {
+  display: block;
+  margin-top: 16px;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 15px;
+  color: #62546A;
+}
+
+.esy-sucre-teaser-conclusion-arrow {
+  font-size: 27px;
+  line-height: 1;
+  color: #62546A;
+  margin-top: 8px;
+  transition: transform .3s ease, color .3s ease;
+}
+
+.esy-sucre-teaser-conclusion-next:hover
+.esy-sucre-teaser-conclusion-arrow {
+ color: #E7A45C;
+  transform: translateY(8px);
+}
+
+/* TABLET */
+
+@media (max-width: 991px) {
+
+  .esy-sucre-teaser-ending {
+    padding: 90px 0 100px;
+  }
+
+  .esy-sucre-teaser-ending-content {
+    padding: 95px 0 110px;
+  }
+
+  .esy-sucre-teaser-ending-content h2 {
+    font-size: clamp(32px, 5vw, 52px);
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .esy-sucre-teaser-ending {
+    padding: 75px 0 85px;
+  }
+
+  .esy-sucre-teaser-ending-meta {
+    font-size: 10px;
+  }
+
+  .esy-sucre-teaser-ending-content {
+    padding: 85px 0 95px;
+  }
+
+  .esy-sucre-teaser-ending-label {
+    font-size: 12px;
+    margin-bottom: 25px;
+  }
+
+  .esy-sucre-teaser-ending-content h2 {
+    font-size: clamp(28px, 7vw, 40px);
+    line-height: 1.6;
+  }
+
+  .esy-sucre-teaser-ending-signature {
+    font-size: 11px;
+    margin-top: 28px;
+  }
+
+  .esy-sucre-teaser-conclusion-next {
+    padding-top: 30px;
+  }
+
+  .esy-sucre-teaser-conclusion-next-title {
+    font-size: 12px;
+  }
+
+  .esy-sucre-teaser-conclusion-next-desc {
+    font-size: 13px;
+  }
+
+  .esy-sucre-teaser-conclusion-arrow {
+    font-size: 25px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .esy-sucre-teaser-conclusion-arrow {
+    transition: none;
+  }
+}
+
+
+/* ==========================================
+   SUCREMELLY TEASER — EXPLORE BRANDING
+========================================== */
+
+.esy-sucre-teaser-explore {
+    position: relative;
+    padding: 120px 0 135px;
+    background: #FFF7EC;
+    color: #5B3A2E;
+    overflow: hidden;
+}
+
+.esy-sucre-teaser-explore-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 95px;
+
+    color: #5B3A2E;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+}
+
+.esy-sucre-teaser-explore-inner {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 70px;
+    min-height: 450px;
+}
+
+/* COPY */
+
+.esy-sucre-teaser-explore-eyebrow {
+    display: block;
+    margin-bottom: 25px;
+
+    color: #A77C6A;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .13em;
+}
+
+.esy-sucre-teaser-explore-copy h2 {
+    margin: 0;
+    color: #5B3A2E;
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-size: clamp(36px, 4vw, 62px);
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: -.055em;
+}
+
+.esy-sucre-teaser-explore-copy h2 span {
+    color: #A77C6A;
+}
+
+.esy-sucre-teaser-explore-copy p {
+    margin: 30px 0 35px;
+    color: #795548;
+    font-size: 16px;
+    line-height: 2;
+}
+
+/* BRAND LINK */
+
+.esy-sucre-teaser-explore-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 45px;
+
+    padding: 17px 23px;
+    border: 1px solid #5B3A2E;
+    border-radius: 50px;
+
+    background: #5B3A2E;
+    color: #FFF7EC;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-decoration: none;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+}
+
+.esy-sucre-teaser-explore-link:hover {
+    background: transparent;
+    color: #5B3A2E;
+    transform: translateY(-4px);
+}
+
+.esy-sucre-teaser-explore-link span {
+    font-size: 19px;
+    transition: transform .3s ease;
+}
+
+.esy-sucre-teaser-explore-link:hover span {
+    transform: translate(3px, -3px);
+}
+
+/* ORBIT ART */
+
+.esy-sucre-teaser-explore-art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.esy-sucre-teaser-explore-circle {
+    position: relative;
+    display: grid;
+    place-items: center;
+
+    width: min(100%, 390px);
+    aspect-ratio: 1;
+
+    border: 1px solid #DCC5B3;
+    border-radius: 50%;
+    background: #F9F0E5;
+}
+
+.esy-sucre-teaser-explore-circle::before,
+.esy-sucre-teaser-explore-circle::after {
+    content: "";
+    position: absolute;
+    inset: 30px;
+    border: 1px dashed #DCC5B3;
+    border-radius: 50%;
+}
+
+.esy-sucre-teaser-explore-circle::after {
+    inset: 65px;
+    border-style: solid;
+}
+
+.esy-sucre-teaser-explore-center {
+    position: relative;
+    z-index: 2;
+
+    color: #5B3A2E;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.06em;
+    text-align: center;
+}
+
+.esy-sucre-teaser-explore-star {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    z-index: 3;
+
+    color: #A77C6A;
+    font-size: 35px;
+
+    animation: esy-teaser-star-spin 8s linear infinite;
+}
+
+.esy-sucre-teaser-explore-orbit {
+    position: absolute;
+    z-index: 3;
+
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+    box-shadow: 0 8px 20px rgba(91,58,46,.12);
+    animation: esy-teaser-orbit-float 3s ease-in-out infinite;
+}
+
+.esy-sucre-teaser-explore-orbit-blue {
+    top: 17%;
+    left: 12%;
+    background: #D6E8FF;
+}
+
+.esy-sucre-teaser-explore-orbit-mint {
+    right: 4%;
+    top: 52%;
+    width: 45px;
+    height: 45px;
+    background: #CFEAD6;
+    animation-delay: .5s;
+}
+
+.esy-sucre-teaser-explore-orbit-pink {
+    bottom: 12%;
+    left: 24%;
+    width: 28px;
+    height: 28px;
+    background: #FAD4E1;
+    animation-delay: 1s;
+}
+
+.esy-sucre-teaser-explore-caption {
+    color: #795548;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .13em;
+    text-align: center;
+}
+
+/* ANIMATION */
+
+@keyframes esy-teaser-star-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes esy-teaser-orbit-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .esy-sucre-teaser-explore-star,
+    .esy-sucre-teaser-explore-orbit {
+        animation: none;
+    }
 }
 
