@@ -30430,6 +30430,8 @@ html {
   color: #5B3A2E;
 }
 
+/* HEADING */
+
 .esy-sucre-teaser-film-heading {
   margin-bottom: 48px;
   text-align: center;
@@ -30441,7 +30443,7 @@ html {
   font-family: "Space Grotesk", sans-serif;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: .16em;
   color: #9A7768;
 }
 
@@ -30450,7 +30452,7 @@ html {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(32px, 5vw, 64px);
   font-weight: 700;
-  letter-spacing: -0.05em;
+  letter-spacing: -.05em;
   color: #5B3A2E;
 }
 
@@ -30460,16 +30462,16 @@ html {
   font-size: 17px;
 }
 
-/* VIDEO */
+/* VIDEO — BOOTSTRAP RATIO */
 
 .esy-sucre-teaser-video {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 14px;
   background-color: #5B3A2E;
 }
+
+/* VIDEO COVER */
 
 .esy-sucre-teaser-video-cover {
   position: absolute;
@@ -30498,60 +30500,86 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(40, 24, 18, 0.25);
+  background: rgba(40, 24, 18, .25);
+  pointer-events: none;
 }
+
+/* PLAY BUTTON */
 
 .esy-sucre-teaser-play {
   position: relative;
   z-index: 1;
   display: grid;
   place-items: center;
+
   width: 78px;
   height: 78px;
+
   border: 2px solid #FFF7EC;
   border-radius: 50%;
+
   color: #FFF7EC;
   font-size: 32px;
-  transition: transform 0.25s ease,
-              background-color 0.25s ease;
+
+  transition:
+    transform .25s ease,
+    background-color .25s ease;
 }
 
-.esy-sucre-teaser-video-cover:hover .esy-sucre-teaser-play,
-.esy-sucre-teaser-video-cover:focus-visible .esy-sucre-teaser-play {
+.esy-sucre-teaser-video-cover:hover
+.esy-sucre-teaser-play,
+.esy-sucre-teaser-video-cover:focus-visible
+.esy-sucre-teaser-play {
   transform: scale(1.1);
-  background-color: rgba(255, 247, 236, 0.18);
+  background-color: rgba(255, 247, 236, .18);
 }
+
+/* PLAY PROMPT */
 
 .esy-sucre-teaser-video-prompt {
   position: relative;
   z-index: 1;
   margin-top: 20px;
+
   font-family: "Space Grotesk", sans-serif;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: .16em;
   color: #FFF7EC;
 }
 
+/* LOCAL VIDEO PLAYER */
+
+.esy-sucre-teaser-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #000;
+}
+
+/* YOUTUBE PLAYER — 추후 연결용 */
+
 .esy-sucre-teaser-video iframe {
-  display: block;
   width: 100%;
   height: 100%;
   border: 0;
 }
+
+/* CAPTION */
 
 .esy-sucre-teaser-film-caption {
   margin: 18px 0 0;
   text-align: center;
   font-family: "Space Grotesk", sans-serif;
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: .12em;
   color: #9A7768;
 }
 
 /* MOBILE */
 
 @media (max-width: 768px) {
+
   .esy-sucre-teaser-film {
     padding: 75px 0;
   }
@@ -30574,14 +30602,18 @@ html {
     margin-top: 14px;
     font-size: 10px;
   }
+
 }
 
+/* REDUCED MOTION */
+
 @media (prefers-reduced-motion: reduce) {
+
   .esy-sucre-teaser-play {
     transition: none;
   }
-}
 
+}
 
 /* ==========================================
    SUCREMELLY TEASER — WELL, I THINK...
@@ -31007,4 +31039,6 @@ html {
         animation: none;
     }
 }
+
+
 

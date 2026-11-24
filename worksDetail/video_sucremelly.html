@@ -209,34 +209,48 @@
                         <p>조금만 더 들여다볼까요?</p>
                     </div>
 
-                    <div class="esy-sucre-teaser-video"
-                        data-youtube-id="YOUR_YOUTUBE_VIDEO_ID">
+                    <div class="esy-sucre-teaser-video ratio ratio-16x9 rounded-4 overflow-hidden">
 
+                        <!-- 기존 썸네일 및 재생 버튼 -->
                         <button
                             type="button"
                             class="esy-sucre-teaser-video-cover"
-                            aria-label="SUCREMELLY 티저 영상 재생"
-                        >
-                            <img src="../assets/img/portfolio/Sucremelly/Sucremelly_Video.png" alt="" loading="lazy" >
+                            aria-label="SUCREMELLY 티저 영상 재생">
+
+                            <img src="../assets/img/portfolio/Sucremelly/Sucremelly_Video.png" alt="" loading="lazy">
 
                             <span class="esy-sucre-teaser-play" aria-hidden="true">
-                            <i class="bi bi-play-fill"></i>
+                                <i class="bi bi-play-fill"></i>
                             </span>
 
                             <span class="esy-sucre-teaser-video-prompt">
-                            PRESS PLAY TO ENTER
+                                PRESS PLAY TO ENTER
                             </span>
+
                         </button>
+
+                        <!-- 실제 영상 -->
+                        <video
+                            id="sucre-teaser-local-video"
+                            class="w-100 h-100 d-none"
+                            controls
+                            playsinline
+                            preload="none">
+
+                            <source
+                                src="../assets/img/portfolio/video/Sucremelly_teaser.mp4"
+                                type="video/mp4">
+
+                        </video>
 
                     </div>
 
                     <p class="esy-sucre-teaser-film-caption">
-                    A SWEET HOME FOR EVERY MELLAMI.
+                        A SWEET HOME FOR EVERY MELLAMI.
                     </p>
 
                 </div>
             </section>
-
 
             <!-- SUCREMELLY TEASER — WELL, I THINK... -->
             <section id="sucre-teaser-ending" class="esy-sucre-teaser-ending">
@@ -419,33 +433,24 @@
         <!-- Main JS File -->
         <script src="../assets/js/main.js"></script>
 
-        <!-- SUCREMELLY TEASER — YOUTUBE PLAYER -->
+        
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-            const video = document.querySelector(".esy-sucre-teaser-video");
 
-            if (!video) return;
+                const cover = document.querySelector(".esy-sucre-teaser-video-cover");
+                const video = document.getElementById("sucre-teaser-local-video");
 
-            const cover = video.querySelector(".esy-sucre-teaser-video-cover");
-            const videoId = video.dataset.youtubeId;
+                if (!cover || !video) return;
 
-            if (!cover || !videoId) return;
+                cover.addEventListener("click", () => {
 
-            cover.addEventListener("click", () => {
-                    if (videoId === "YOUR_YOUTUBE_VIDEO_ID") return;
+                    cover.classList.add("d-none");
+                    video.classList.remove("d-none");
 
-                    const iframe = document.createElement("iframe");
+                    video.play().catch(() => {});
 
-                    iframe.src =
-                    `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0`;
-
-                    iframe.title = "SUCREMELLY — TEASER FILM";
-                    iframe.allow =
-                    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-                    iframe.allowFullscreen = true;
-
-                    cover.replaceWith(iframe);
                 });
+
             });
         </script>
 
